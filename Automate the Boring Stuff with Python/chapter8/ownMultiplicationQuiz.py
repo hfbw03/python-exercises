@@ -4,15 +4,15 @@ import random
 import threading
 import time
 
-# This function is responsible for getting user input with a specified timeout
+# This function is responsible for getting user input with a specified timeout.
 def get_user_input(prompt, timeout):
     print(prompt, end='', flush=True)
     user_input = None
 
-    # Defines a function input_thread_func that sets the user_input variable
-    # (non-locally) to the value entered by the user using the input() function.
+    # Sets the user_input variable (non-locally) to the value entered by the user using input().]
+    # nonlocal in this context is to ensure that modifications to user_input within input_thread_func are reflected in the outer get_user_input function's scope.
     def input_thread_func():
-        nonlocal user_input
+        nonlocal user_input 
         user_input = input()
 
     # Creates a new thread (input_thread) that will execute the input_thread_func function.
@@ -64,5 +64,3 @@ for questionNumber in range(numberOfQuestions):
         time.sleep(1)
 
 print('Score: %s / %s' % (correctAnswers, numberOfQuestions))
-
-# This one was hard.
